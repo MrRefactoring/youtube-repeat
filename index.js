@@ -1,30 +1,57 @@
+const createButton = () => {
+  const button = document.createElement('button');
+
+  button.classList.add('ytp-button');
+  button.classList.add('ytp-repeat-button');
+  button.setAttribute('title', 'Repeat');
+  button.setAttribute('area-label', 'Repeat');
+
+  button.innerHTML = `
+    <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+      <use class="ytp-svg-shadow" xlink:href="#ytp-id-144121"></use>
+      <path class="ytp-svg-fill"
+      d="M13,13 h10 v3 l4,-4 l-4,-4 v3 H11 v6 h2 V13 zm10,10 H13 v-3 l-4,4 l4,4 v-3 h12 v-6 h-2 v4 zm-4,-2 V15 h-1 l-2,1 v1 h1.5 v4 H19 z"
+      id="ytp-id-144121"></path>
+    </svg>
+  `;
+
+  return button;
+};
+
+let video;
+let repeatButton;
+let repeat = false;
+
+const onClick = () => {
+  repeat = !repeat;
+
+  video.loop = repeat;
+
+  repeatButton.classList.toggle('red');
+};
+
 const onLoad = () => {
+  video = document.querySelector('video.video-stream');
   const player = document.querySelector('.ytd-player');
+
+  if (!player) {
+    return;
+  }
+
   const controls = player.querySelector('.ytp-left-controls');
   const muteButton = controls.querySelector('.ytp-mute-button').parentNode;
 
-  const repeatButton = document.createElement('button');
-  const repeatSvg = document.createElement('svg');
-  const repeatPath = document.createElement('path');
-  const repeatUse = document.createElement('use');
+  repeatButton = createButton();
 
-  repeatUse.classList.add('ytp-svg-shadow');
-
-  repeatPath.classList.add('ytp-svg-fill');
-  repeatPath.setAttribute('d', 'M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z');
-
-  repeatUse.appendChild(repeatPath);
-
-  repeatSvg.setAttribute('height', '100%');
-  repeatSvg.setAttribute('width', '100%');
-  repeatSvg.setAttribute('version', '1.1');
-  repeatSvg.setAttribute('viewBox', '0 0 36 36');
-  repeatSvg.appendChild(repeatUse);
-
-  repeatButton.classList.add('ytp-button');
-  repeatButton.appendChild(repeatSvg);
+  repeatButton.addEventListener('click', onClick);
 
   controls.insertBefore(repeatButton, muteButton);
 };
 
-window.addEventListener('load', onLoad, false);
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    console.log(request, sender, sendResponse);
+  }
+);
+
+onLoad();
