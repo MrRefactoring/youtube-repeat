@@ -10,8 +10,6 @@ class Patcher {
       return; 
     }
 
-    this.resetButton();
-
     const controls = player.querySelector('.ytp-left-controls');
     const muteButton = controls.querySelector('.ytp-mute-button').parentNode;
 
