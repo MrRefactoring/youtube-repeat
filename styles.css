@@ -1,7 +1,0 @@
-body .ytp-repeat-button > svg > path {
-  transition: fill .1s cubic-bezier(0.4,0.0,1,1);
-}
-
-body .ytp-repeat-button.red .ytp-svg-fill {
-  fill: #FF0000;
-}

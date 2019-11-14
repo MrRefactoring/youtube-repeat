@@ -1,7 +1,27 @@
+body .ytp-repeat-button {
+  text-decoration: none;
+}
+
+body .ytp-repeat-button > .tip {
+  transition: opacity 1s;
+  opacity: 0;
+  position: absolute;
+  top: -50px;
+}
+
+body .ytp-repeat-button > .tip > span {
+  background: red;
+  padding: 5px;
+}
+
+body .ytp-repeat-button:hover > .tip {
+  opacity: 1;
+}
+
 body .ytp-repeat-button > svg > path {
-  transition: fill .1s cubic-bezier(0.4,0.0,1,1);
+  transition: fill 0.1s cubic-bezier(0.4, 0, 1, 1);
 }
 
 body .ytp-repeat-button.red .ytp-svg-fill {
-  fill: #FF0000;
+  fill: #ff0000;
 }

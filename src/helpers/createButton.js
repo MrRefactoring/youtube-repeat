@@ -7,6 +7,7 @@ const createButton = () => {
   button.setAttribute('area-label', 'Repeat');
 
   button.innerHTML = `
+    <div class='tip'><span>Repeat</span></div>
     <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
       <use class="ytp-svg-shadow" xlink:href="#ytp-id-144121"></use>
       <path class="ytp-svg-fill"

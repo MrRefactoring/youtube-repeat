@@ -7,7 +7,7 @@ class Patcher {
     const player = document.querySelector('.ytd-player');
 
     if (!player) {
-      return; 
+      return;
     }
 
     const controls = player.querySelector('.ytp-left-controls');
