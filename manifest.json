@@ -16,7 +16,10 @@
         "src/styles.css"
       ],
       "js": [
+        "src/helpers/onElementHeightChange.js",
         "src/helpers/onRepeatClick.js",
+        "src/helpers/removeTitle.js",
+        "src/helpers/resetTitle.js",
         "src/helpers/createButton.js",
         "src/helpers/patcher.js",
         "src/content.js"
