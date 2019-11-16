@@ -29,9 +29,4 @@ class Patcher {
 
     controls.insertBefore(this.button, muteButton);
   }
-
-  resetButton() {
-    this.button.onclick = null;
-    this.button.classList.remove('red');
-  }
 }
